@@ -43,7 +43,7 @@ You can install the required packages using pip:
 
 ```bash
 pip install Flask TensorFlow keras nltk pandas joblib
-
+```
 
 The model is a Convolutional Neural Network - Long Short-Term Memory (CNN-LSTM) architecture designed for text classification, specifically targeting mental health-related inputs. Here's a breakdown of its components:
 
