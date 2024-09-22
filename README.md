@@ -14,3 +14,32 @@ and offer therapy strategies. Users of this program can interact with specialist
 guidance, which helps to alleviate anxiety, stress, and other disorders by reducing 
 their health issues and worries. It takes a user-centric approach to mental health 
 treatment, integrating the power of AI with personalized care.
+
+
+# Mental Health Classifier Application
+
+This application uses a CNN-LSTM model and a Multinomial Naive Bayes classifier to analyze user input related to mental health. It identifies potential mental health issues based on keywords and provides therapeutic technique recommendations.
+
+## Features
+
+- **Text Input Analysis**: Users can input text related to their mental health experiences.
+- **Keyword Extraction**: The app extracts keywords and identifies related symptoms using natural language processing.
+- **Disease Prediction**: Based on the extracted symptoms, the app predicts potential mental health disorders.
+- **Recommendations**: Provides therapeutic techniques associated with identified disorders.
+
+## Requirements
+
+Before running the application, ensure you have the following installed:
+
+- Python 3.x
+- Flask
+- TensorFlow
+- Keras
+- NLTK
+- pandas
+- joblib
+
+You can install the required packages using pip:
+
+```bash
+pip install Flask TensorFlow keras nltk pandas joblib
