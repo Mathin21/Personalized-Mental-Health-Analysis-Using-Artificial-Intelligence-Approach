@@ -79,4 +79,5 @@ The model can be trained end-to-end on labeled data, allowing it to learn releva
 
 ## Use Case
 The model is utilized in applications focused on mental health, helping users by identifying symptoms based on their descriptions and providing recommendations for therapeutic techniques based on the classification results.
+
 This architecture is well-suited for handling the complexities of language, making it effective for tasks like sentiment analysis, topic classification, and more in the mental health domain.
