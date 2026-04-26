@@ -5,9 +5,17 @@ from nltk.corpus import stopwords
 from nltk import pos_tag
 import pandas as pd
 import tensorflow as tf
-from keras.models import load_model
 from tensorflow.keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+import nltk
+
+# Download required NLTK data
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('averaged_perceptron_tagger_eng')
 
 app = Flask(__name__)
 
@@ -73,7 +81,7 @@ def classify_and_recommend(input_text):
     prediction = predict_mental_health(input_text)
     response = {}
     if prediction > 0.5:
-        response['message'] = "The input is related to Mental Health."
+        response['message'] = "The above input is related to Mental Health."
         keywords = extract_keywords(input_text)
         new_symptoms = [keyword for keyword in keywords if keyword.lower() in mental_health_keywords]
         response['mental_health_related_symptoms'] = new_symptoms
@@ -93,7 +101,7 @@ def classify_and_recommend(input_text):
                 recommendations.append(recommendation_str)
         response['recommendations'] = recommendations
     else:
-        response['message'] = "The input is not related to Mental Health."
+        response['message'] = "The above input is not related to Mental Health."
     return response
 
 
@@ -104,11 +112,15 @@ def home():
 @app.route('/classify', methods=['POST'])
 def classify():
     user_input_text = request.form.get('user_input')
-    response = classify_and_recommend(user_input_text)
-    # Render the result.html template with the classification results
-    return render_template('result.html', message=response['message'],
-                           diseases=response.get('diseases', []),
-                           recommendations=response.get('recommendations', []))
 
+    response = classify_and_recommend(user_input_text)
+
+    return render_template(
+        'result.html',
+        message=response['message'],
+        diseases=response.get('diseases', []),
+        recommendations=response.get('recommendations', []),
+        user_input=user_input_text   
+    )
 if __name__ == '__main__':
     app.run(debug=True)
