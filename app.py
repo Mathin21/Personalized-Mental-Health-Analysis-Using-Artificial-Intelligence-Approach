@@ -11,11 +11,11 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 import nltk
 
-# Download required NLTK data
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('averaged_perceptron_tagger')
-nltk.download('averaged_perceptron_tagger_eng')
+# # Download required NLTK data
+# nltk.download('punkt')
+# nltk.download('stopwords')
+# nltk.download('averaged_perceptron_tagger')
+# nltk.download('averaged_perceptron_tagger_eng')
 
 app = Flask(__name__)
 
@@ -123,4 +123,4 @@ def classify():
         user_input=user_input_text   
     )
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
